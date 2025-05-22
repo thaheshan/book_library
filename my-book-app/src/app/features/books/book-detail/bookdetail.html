@@ -1,0 +1,92 @@
+<div class="container">
+      <div *ngIf="loading" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading book details...</p>
+      </div>
+      
+      <div *ngIf="error" class="error-state">
+        <i class="fas fa-exclamation-circle error-icon"></i>
+        <h3>{{ error }}</h3>
+        <p>Please try again or go back to browse other books.</p>
+        <a routerLink="/books" class="btn-primary">Return to Books</a>
+      </div>
+      
+      <div *ngIf="!loading && book" class="book-detail">
+        <div class="breadcrumb">
+          <a routerLink="/books">Books</a> 
+          <i class="fas fa-chevron-right"></i> 
+          <span>{{ book.title }}</span>
+        </div>
+        
+        <div class="book-container">
+          <div class="book-image-container">
+            <img [src]="book.coverImage || 'https://images.pexels.com/photos/1106468/pexels-photo-1106468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'" [alt]="book.title" class="book-cover">
+            <div class="book-badges">
+              <span *ngIf="book.isPremium" class="badge premium-badge">
+                <i class="fas fa-crown"></i> Premium
+              </span>
+              <span *ngIf="!book.isPremium" class="badge free-badge">
+                <i class="fas fa-gift"></i> Free
+              </span>
+            </div>
+          </div>
+          
+          <div class="book-info">
+            <h1 class="book-title">{{ book.title }}</h1>
+            <p class="book-author">by {{ book.author }}</p>
+            
+            <div class="book-meta">
+              <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Published: {{ book.publicationDate | date:'mediumDate' }}</span>
+              </div>
+              <div class="meta-item" *ngIf="book.rating">
+                <i class="fas fa-star"></i>
+                <span>Rating: {{ book.rating }}/5</span>
+              </div>
+              <div class="meta-item" *ngIf="book.pages">
+                <i class="fas fa-book"></i>
+                <span>Pages: {{ book.pages }}</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-barcode"></i>
+                <span>ISBN: {{ book.isbn }}</span>
+              </div>
+              <div class="meta-item" *ngIf="book.genre">
+                <i class="fas fa-bookmark"></i>
+                <span>Genre: {{ book.genre }}</span>
+              </div>
+            </div>
+            
+            <div class="book-description">
+              <h3>Description</h3>
+              <p>{{ book.description }}</p>
+            </div>
+            
+            <div class="book-actions">
+              <ng-container *ngIf="book.isPremium && !hasAccess">
+                <button class="btn-action buy-btn" (click)="purchaseBook()">
+                  <i class="fas fa-shopping-cart"></i> Buy for ${{ book.price }}
+                </button>
+              </ng-container>
+              
+              <ng-container *ngIf="!book.isPremium || hasAccess">
+                <a [routerLink]="['/books', book.id, 'read']" class="btn-action read-btn">
+                  <i class="fas fa-book-open"></i> Read Now
+                </a>
+              </ng-container>
+              
+              <ng-container *ngIf="isAuthor">
+                <a [routerLink]="['/author/books/edit', book.id]" class="btn-action edit-btn">
+                  <i class="fas fa-edit"></i> Edit Book
+                </a>
+                
+                <button class="btn-action delete-btn" (click)="deleteBook()">
+                  <i class="fas fa-trash"></i> Delete Book
+                </button>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
