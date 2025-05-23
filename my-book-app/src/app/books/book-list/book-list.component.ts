@@ -233,7 +233,7 @@ import {
     .btn-secondary:hover,
     .btn-secondary:focus {
       background-color: white;
-      color: var(--secondary-700);
+      color: var(--primary-700);
       box-shadow: 0 6px 14px rgba(255, 255, 255, 0.7);
       outline: none;
     }
