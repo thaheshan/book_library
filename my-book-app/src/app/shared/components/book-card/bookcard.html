@@ -1,0 +1,59 @@
+<div class="book-card" [ngClass]="{'premium': book.isPremium}">
+      <div class="book-cover">
+        <img [src]="book.coverImage || 'https://images.pexels.com/photos/1106468/pexels-photo-1106468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'" [alt]="book.title" class="cover-image">
+        <div class="book-badges">
+          <span *ngIf="book.isPremium" class="badge premium-badge">
+            <i class="fas fa-crown"></i> Premium
+          </span>
+          <span *ngIf="!book.isPremium" class="badge free-badge">
+            <i class="fas fa-gift"></i> Free
+          </span>
+        </div>
+      </div>
+      
+      <div class="book-info">
+        <h3 class="book-title">{{ book.title }}</h3>
+        <p class="book-author">by {{ book.author }}</p>
+        
+        <div class="book-meta">
+          <span class="meta-item" *ngIf="book.rating">
+            <i class="fas fa-star"></i> {{ book.rating }}/5
+          </span>
+          <span class="meta-item" *ngIf="book.genre">
+            <i class="fas fa-bookmark"></i> {{ book.genre }}
+          </span>
+        </div>
+        
+        <div class="book-actions">
+          <a [routerLink]="['/books', book.id]" class="btn-action details-btn">
+            Details
+          </a>
+          
+          <ng-container *ngIf="book.isPremium && !hasAccess">
+            <button class="btn-action buy-btn" (click)="onBuy()">
+              <i class="fas fa-shopping-cart"></i> ${{ book.price }}
+            </button>
+          </ng-container>
+          
+          <ng-container *ngIf="!book.isPremium || hasAccess">
+            <a [routerLink]="['/books', book.id, 'read']" class="btn-action read-btn">
+              <i class="fas fa-book-open"></i> Read
+            </a>
+          </ng-container>
+          
+          <button 
+            *ngIf="isAuthor"
+            class="btn-action edit-btn" 
+            (click)="onEdit()">
+            <i class="fas fa-edit"></i>
+          </button>
+          
+          <button 
+            *ngIf="isAuthor"
+            class="btn-action delete-btn" 
+            (click)="onDelete()">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>

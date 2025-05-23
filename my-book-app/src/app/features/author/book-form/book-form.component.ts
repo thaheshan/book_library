@@ -24,10 +24,10 @@ import { Book } from '../../../core copy/models/book.model';
               id="title" 
               formControlName="title" 
               class="form-control"
-              [ngClass]="{'invalid': submitted && f.title.errors}"
+              [ngClass]="{'invalid': submitted && f['title'].errors}"
               placeholder="Enter book title">
-            <div *ngIf="submitted && f.title.errors" class="error-message">
-              <span *ngIf="f.title.errors.required">Title is required</span>
+            <div *ngIf="submitted && f['title'].errors" class="error-message">
+              <span *ngIf="f['title'].errors['required']">Title is required</span>
             </div>
           </div>
           
@@ -38,10 +38,10 @@ import { Book } from '../../../core copy/models/book.model';
               id="author" 
               formControlName="author" 
               class="form-control"
-              [ngClass]="{'invalid': submitted && f.author.errors}"
+              [ngClass]="{'invalid': submitted && f['author'].errors}"
               placeholder="Enter author name">
-            <div *ngIf="submitted && f.author.errors" class="error-message">
-              <span *ngIf="f.author.errors.required">Author is required</span>
+            <div *ngIf="submitted && f['author'].errors" class="error-message">
+              <span *ngIf="f['author'].errors['required']">Author is required</span>
             </div>
           </div>
           
@@ -53,10 +53,10 @@ import { Book } from '../../../core copy/models/book.model';
                 id="isbn" 
                 formControlName="isbn" 
                 class="form-control"
-                [ngClass]="{'invalid': submitted && f.isbn.errors}"
+                [ngClass]="{'invalid': submitted && f['isbn'].errors}"
                 placeholder="e.g., 9781234567890">
-              <div *ngIf="submitted && f.isbn.errors" class="error-message">
-                <span *ngIf="f.isbn.errors.required">ISBN is required</span>
+              <div *ngIf="submitted && f['isbn'].errors" class="error-message">
+                <span *ngIf="f['isbn'].errors['required']">ISBN is required</span>
               </div>
             </div>
             
@@ -67,9 +67,9 @@ import { Book } from '../../../core copy/models/book.model';
                 id="publicationDate" 
                 formControlName="publicationDate" 
                 class="form-control"
-                [ngClass]="{'invalid': submitted && f.publicationDate.errors}">
-              <div *ngIf="submitted && f.publicationDate.errors" class="error-message">
-                <span *ngIf="f.publicationDate.errors.required">Publication date is required</span>
+                [ngClass]="{'invalid': submitted && f['publicationDate'].errors}">
+              <div *ngIf="submitted && f['publicationDate'].errors" class="error-message">
+                <span *ngIf="f['publicationDate'].errors['required']">Publication date is required</span>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ import { Book } from '../../../core copy/models/book.model';
                 id="genre" 
                 formControlName="genre" 
                 class="form-control"
-                [ngClass]="{'invalid': submitted && f.genre.errors}">
+                [ngClass]="{'invalid': submitted && f['genre'].errors}">
                 <option value="">Select Genre</option>
                 <option value="Classic">Classic</option>
                 <option value="Programming">Programming</option>
@@ -93,8 +93,8 @@ import { Book } from '../../../core copy/models/book.model';
                 <option value="Biography">Biography</option>
                 <option value="History">History</option>
               </select>
-              <div *ngIf="submitted && f.genre.errors" class="error-message">
-                <span *ngIf="f.genre.errors.required">Genre is required</span>
+              <div *ngIf="submitted && f['genre'].errors" class="error-message">
+                <span *ngIf="f['genre'].errors['required']">Genre is required</span>
               </div>
             </div>
             
@@ -115,10 +115,10 @@ import { Book } from '../../../core copy/models/book.model';
               id="description" 
               formControlName="description" 
               class="form-control text-area"
-              [ngClass]="{'invalid': submitted && f.description.errors}"
+              [ngClass]="{'invalid': submitted && f['description'].errors}"
               placeholder="Enter book description"></textarea>
-            <div *ngIf="submitted && f.description.errors" class="error-message">
-              <span *ngIf="f.description.errors.required">Description is required</span>
+            <div *ngIf="submitted && f['description'].errors" class="error-message">
+              <span *ngIf="f['description'].errors['required']">Description is required !</span>
             </div>
           </div>
           
@@ -141,19 +141,19 @@ import { Book } from '../../../core copy/models/book.model';
               </label>
             </div>
             
-            <div class="form-group" *ngIf="f.isPremium.value">
+            <div class="form-group" *ngIf="f['isPremium'].value">
               <label for="price" class="form-label">Price ($)</label>
               <input 
                 type="number" 
                 id="price" 
                 formControlName="price" 
                 class="form-control"
-                [ngClass]="{'invalid': submitted && f.isPremium.value && f.price.errors}"
+                [ngClass]="{'invalid': submitted && f['isPremium'].value && f['price'].errors}"
                 placeholder="e.g., 19.99"
                 step="0.01">
-              <div *ngIf="submitted && f.isPremium.value && f.price.errors" class="error-message">
-                <span *ngIf="f.price.errors.required">Price is required for premium books</span>
-                <span *ngIf="f.price.errors.min">Price must be greater than 0</span>
+              <div *ngIf="submitted && f['isPremium'].value && f['price'].errors" class="error-message">
+                <span *ngIf="f['price'].errors['required']">Price is required for premium books</span>
+                <span *ngIf="f['price'].errors['min']">Price must be greater than 0</span>
               </div>
             </div>
           </div>

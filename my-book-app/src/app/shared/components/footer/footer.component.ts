@@ -11,18 +11,18 @@ import { RouterModule } from '@angular/router';
       <div class="container">
         <div class="footer-grid">
           <div class="footer-section">
-            <h3 class="footer-title">MJ Paradise</h3>
+            <h3 class="footer-title">BookSphere</h3>
             <p class="footer-description">
               Your ultimate book management platform for readers and authors.
             </p>
             <div class="social-links">
-              <a href="#" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Twitter" class="social-link"><i class="fab fa-twitter"></i></a>
-              <a href="#" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="LinkedIn" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
-
+          
           <div class="footer-section">
             <h4 class="footer-subtitle">Quick Links</h4>
             <ul class="footer-links">
@@ -32,7 +32,7 @@ import { RouterModule } from '@angular/router';
               <li><a routerLink="/authors">Authors</a></li>
             </ul>
           </div>
-
+          
           <div class="footer-section">
             <h4 class="footer-subtitle">Resources</h4>
             <ul class="footer-links">
@@ -42,7 +42,7 @@ import { RouterModule } from '@angular/router';
               <li><a routerLink="/blog">Blog</a></li>
             </ul>
           </div>
-
+          
           <div class="footer-section">
             <h4 class="footer-subtitle">Legal</h4>
             <ul class="footer-links">
@@ -53,10 +53,10 @@ import { RouterModule } from '@angular/router';
             </ul>
           </div>
         </div>
-
+        
         <div class="footer-bottom">
-          <p>&copy; 2025 Thaheshan. All rights reserved.</p>
-          <p>Made with <i class="fas fa-heart pulse"></i> for knowledge lovers</p>
+          <p>&copy; 2025 BookSphere. All rights reserved.</p>
+          <p>Made with <i class="fas fa-heart"></i> for knowledge lovers</p>
         </div>
       </div>
     </footer>
@@ -65,122 +65,116 @@ import { RouterModule } from '@angular/router';
     .footer {
       background-color: var(--bg-secondary);
       border-top: 1px solid var(--border-color);
-      padding: 4rem 1rem 2rem;
-      margin-top: 4rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: var(--space-5) 0 var(--space-3);
+      margin-top: var(--space-6);
     }
-
+    
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
     }
-
+    
     .footer-title {
-      font-size: 1.75rem;
-      font-weight: bold;
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-bold);
       color: var(--primary-600);
-      margin-bottom: 0.75rem;
+      margin-bottom: var(--space-2);
     }
-
+    
     .footer-description {
       color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--space-3);
+      line-height: 1.5;
     }
-
+    
     .footer-subtitle {
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: var(--font-weight-medium);
       color: var(--text-primary);
-      margin-bottom: 1rem;
+      margin-bottom: var(--space-3);
     }
-
+    
     .footer-links {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
+    
     .footer-links li {
-      margin-bottom: 0.5rem;
+      margin-bottom: var(--space-2);
     }
-
+    
     .footer-links a {
       color: var(--text-secondary);
       text-decoration: none;
-      transition: color 0.3s ease;
-      font-size: 0.95rem;
+      transition: color 0.2s ease;
     }
-
+    
     .footer-links a:hover {
       color: var(--primary-600);
+      text-decoration: none;
     }
-
+    
     .social-links {
       display: flex;
-      gap: 0.75rem;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
     }
-
+    
     .social-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background-color: var(--bg-primary);
       color: var(--text-secondary);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      font-size: 1rem;
+      transition: all 0.2s ease;
     }
-
+    
     .social-link:hover {
       background-color: var(--primary-600);
       color: white;
-      transform: scale(1.1);
+      text-decoration: none;
     }
-
+    
     .footer-bottom {
-      margin-top: 2.5rem;
-      padding-top: 1rem;
+      margin-top: var(--space-5);
+      padding-top: var(--space-3);
       border-top: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
-      align-items: center;
       color: var(--text-muted);
-      font-size: 0.875rem;
-      flex-wrap: wrap;
-      row-gap: 0.5rem;
+      font-size: 0.9rem;
     }
-
+    
     .footer-bottom i {
       color: var(--error-500);
-      margin-left: 0.25rem;
     }
-
-    .pulse {
-      animation: pulse 1.5s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.6;
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
-
+    
     @media (max-width: 576px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
       .footer-bottom {
         flex-direction: column;
+        align-items: center;
         text-align: center;
+        gap: var(--space-2);
       }
     }
   `]
 })
-export class FooterComponent {}
+export class FooterComponent {
+  constructor() {}
+}

@@ -197,10 +197,15 @@ button {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 2400px;
   padding: var(--space-3);
 }
+
+.container_2 {
+  max-width: 2400px;
+  padding: var(--space-3);
+}
+
 
 .card {
   background-color: var(--bg-secondary);
